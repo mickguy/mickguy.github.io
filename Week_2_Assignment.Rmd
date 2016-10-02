@@ -1,0 +1,52 @@
+---
+title: "Week 2 Assignment"
+author: "Mick Guy"
+date: "October 2, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Week 2 Assignment Using Leaflet
+
+Date: October 2, 2016
+
+```{r libraries}
+# Load Libraries
+library(leaflet)
+library(googlesheets)
+library(dplyr)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r sherlock_data, echo=FALSE}
+# Need to change this to url
+# https://docs.google.com/spreadsheets/d/1b9eFZOsCnHh8MOHxr9hzOxEpLq_isUwpDt43AFm46cw/edit?usp=sharing
+# Retrieve Google Sheet
+# sherlock.holmes <- gs_title("Sherlock Holmes Case Places")
+# Spreadsheet must be published to the web (File->Publish to web) as the normal sharing link does not work.
+sherlock.holmes = gs_url("https://docs.google.com/spreadsheets/d/1b9eFZOsCnHh8MOHxr9hzOxEpLq_isUwpDt43AFm46cw/pubhtml")
+# Read the data
+sherlock <- sherlock.holmes %>%  gs_read()
+
+# Create a custom marker icon
+sherlockIcon <- makeIcon(
+  iconUrl = "sherlock_icon_tiny.png",
+  iconWidth = 32,
+  iconHeight = 32,
+  iconAnchorX = 16,
+  iconAnchorY = 30 
+  )
+
+# Pipe the data to leaflet, add the tiles, markers, icon and popups 
+sherlock %>% leaflet() %>% addTiles() %>% addMarkers(icon=sherlockIcon, popup=sherlock$popup) %>% clearBounds()
+
+
+```
+
+
