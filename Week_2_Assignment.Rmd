@@ -24,8 +24,7 @@ library(dplyr)
 
 
 ```{r sherlock_data, echo=FALSE}
-# Need to change this to url
-# https://docs.google.com/spreadsheets/d/1b9eFZOsCnHh8MOHxr9hzOxEpLq_isUwpDt43AFm46cw/edit?usp=sharing
+
 # Retrieve Google Sheet
 # sherlock.holmes <- gs_title("Sherlock Holmes Case Places")
 # Spreadsheet must be published to the web (File->Publish to web) as the normal sharing link does not work.
