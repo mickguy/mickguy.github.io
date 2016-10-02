@@ -22,7 +22,6 @@ library(dplyr)
 
 ## Including Plots
 
-You can also embed plots, for example:
 
 ```{r sherlock_data, echo=FALSE}
 # Need to change this to url
